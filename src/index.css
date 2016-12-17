@@ -5,11 +5,12 @@ body {
 }
 .colors{
   display: flex;
+  flex-wrap: wrap;
 }
 
 
 .colors .colors__one{
   width: 80px;
   height: 80px;
-  margin-right: 10px;
+  margin: 8px 10px;
 }
