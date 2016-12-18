@@ -20,7 +20,7 @@ body {
   height: 80px;
   line-height: 80px;
   text-align: center;
-  margin: 20px;
+  margin: 25px;
   border-radius: 50%;
 }
 
@@ -48,6 +48,8 @@ body {
   height:20px;
   background: black;
   border-radius: 50%;
+  transition: all .3s ease;
+  cursor: pointer;
 }
 
 .colors .colors__preview--north{
@@ -65,6 +67,26 @@ body {
 
 .colors .colors__preview--west{
   transform: translate(-50px , 0);
+}
+
+
+
+
+.colors .colors__preview--north:hover{
+  transform: translate(0 , -55px);
+}
+
+.colors .colors__preview--south:hover{
+  transform: translate(0 , 55px);
+}
+
+.colors .colors__preview--east:hover{
+  transform: translate(55px , 0);
+
+}
+
+.colors .colors__preview--west:hover{
+  transform: translate(-55px , 0);
 }
 
 
