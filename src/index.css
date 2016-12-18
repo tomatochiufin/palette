@@ -9,8 +9,67 @@ body {
 }
 
 
-.colors .colors__one{
+.colors .colors__list{
+  position: relative;
+  list-style-type: none;
+}
+
+.colors .colors__list--one{
+  position: relative;
   width: 80px;
   height: 80px;
+  line-height: 80px;
+  text-align: center;
   margin: 8px 10px;
+  border-radius: 50%;
 }
+
+.colors .colors__list--dash{
+  border: 1px dashed #333;
+  cursor: pointer;
+  transition: all 1s ease;
+}
+
+.colors .colors__list--dash:hover{
+  background: #eee;
+}
+
+.colors .colors__preview{
+  position: absolute;
+  top: 30px;
+  left:30px;
+}
+
+.colors .colors__preview--item{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height:20px;
+  background: black;
+  border-radius: 50%;
+}
+
+.colors .colors__preview--north{
+  transform: translate(0 , -40px);
+}
+
+.colors .colors__preview--south{
+  transform: translate(0 , 40px);
+}
+
+.colors .colors__preview--east{
+  transform: translate(40px , 0);
+
+}
+
+.colors .colors__preview--west{
+  transform: translate(-40px , 0);
+}
+
+
+
+
+
+
+
