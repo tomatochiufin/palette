@@ -25,6 +25,7 @@ class App extends Component {
     this.resetAll    = this.resetAll.bind(this);
     this.changePrevColor = this.changePrevColor.bind(this);
     this.changeNextColor = this.changeNextColor.bind(this);
+    this.previewColor    = this.previewColor.bind(this);
   }
 
   createColor(){
@@ -60,8 +61,6 @@ class App extends Component {
       console.log(hex);
     }
 
-    stateColor[i].rgb = hex;
-    this.setState(stateColor);
   }
 
   darker(i){
@@ -183,6 +182,33 @@ class App extends Component {
     this.setState(stateColor);
   }
 
+  previewColor(i, hsl, num){
+    console.log(i);
+    console.log(hsl);
+    console.log(num);
+
+    let stateColor = this.state.colors;
+    let thisHex = stateColor[i].rgb;
+
+    let rgbObj = Color(thisHex);
+    let hslObj = rgbObj.hsl();
+
+    let lighterColor = _.parseInt(hslObj.color[hsl])+num;
+    hslObj.color[hsl] = lighterColor;
+
+    let rgbArray = hslObj.rgb().array();
+    let hex = "#";
+    for(let i = 0 ; i< rgbArray.length ; i++){
+      console.log(rgbArray[i]);
+      hex += this.noOneWord(rgbArray[i]);
+      console.log(hex);
+    }
+    let returnStyle = {'background': hex};
+    console.log(returnStyle);
+    return returnStyle;
+
+  }
+
   resetAll(){
 
   }
@@ -215,10 +241,10 @@ class App extends Component {
                 <li className="colors__list" key={"color" + i}>
                   <div className="colors__list--one" style={bcg}>{color.rgb}
                     <div className="colors__preview">
-                      <div className="colors__preview--item colors__preview--north"></div>
-                      <div className="colors__preview--item colors__preview--south"></div>
-                      <div className="colors__preview--item colors__preview--east"></div>
-                      <div className="colors__preview--item colors__preview--west"></div>
+                      <div className="colors__preview--item colors__preview--north" style={this.previewColor(i, 0, 10)}></div>
+                      <div className="colors__preview--item colors__preview--south" style={this.previewColor(i, 0, -10)}></div>
+                      <div className="colors__preview--item colors__preview--east" style={this.previewColor(i, 1, 10)}></div>
+                      <div className="colors__preview--item colors__preview--west" style={this.previewColor(i, 1, 10)}></div>
                       <div className="colors__preview--item colors__preview--prevColor"></div>
                       <div className="colors__preview--item colors__preview--nextColor"></div>
                     </div>
