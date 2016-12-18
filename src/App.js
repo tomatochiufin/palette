@@ -183,10 +183,6 @@ class App extends Component {
   }
 
   previewColor(i, hsl, num){
-    console.log(i);
-    console.log(hsl);
-    console.log(num);
-
     let stateColor = this.state.colors;
     let thisHex = stateColor[i].rgb;
 
@@ -199,12 +195,9 @@ class App extends Component {
     let rgbArray = hslObj.rgb().array();
     let hex = "#";
     for(let i = 0 ; i< rgbArray.length ; i++){
-      console.log(rgbArray[i]);
       hex += this.noOneWord(rgbArray[i]);
-      console.log(hex);
     }
     let returnStyle = {'background': hex};
-    console.log(returnStyle);
     return returnStyle;
 
   }
@@ -241,10 +234,14 @@ class App extends Component {
                 <li className="colors__list" key={"color" + i}>
                   <div className="colors__list--one" style={bcg}>{color.rgb}
                     <div className="colors__preview">
-                      <div className="colors__preview--item colors__preview--north" style={this.previewColor(i, 0, 10)}></div>
-                      <div className="colors__preview--item colors__preview--south" style={this.previewColor(i, 0, -10)}></div>
-                      <div className="colors__preview--item colors__preview--east" style={this.previewColor(i, 1, 10)}></div>
-                      <div className="colors__preview--item colors__preview--west" style={this.previewColor(i, 1, 10)}></div>
+                      <div className="colors__preview--item colors__preview--north" style={this.previewColor(i, 0, 10)}
+                          onClick={this.changeNextColor.bind(this,i)}></div>
+                      <div className="colors__preview--item colors__preview--south" style={this.previewColor(i, 0, -10)}
+                          onClick={this.changePrevColor.bind(this,i)}></div>
+                      <div className="colors__preview--item colors__preview--east" style={this.previewColor(i, 1, 10)}
+                          onClick={this.moreColor.bind(this,i)}></div>
+                      <div className="colors__preview--item colors__preview--west" style={this.previewColor(i, 1, 10)}
+                          onClick={this.lessColor.bind(this,i)}></div>
                       <div className="colors__preview--item colors__preview--prevColor"></div>
                       <div className="colors__preview--item colors__preview--nextColor"></div>
                     </div>
